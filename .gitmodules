@@ -1,0 +1,6 @@
+[submodule "blog/superfluous/themes/ghostwriter"]
+	path = blog/superfluous/themes/ghostwriter
+	url = https://github.com/jbub/ghostwriter.git
+[submodule "blog/superfluous/themes/paperback"]
+	path = blog/superfluous/themes/paperback
+	url = https://github.com/damiencaselli/paperback.git

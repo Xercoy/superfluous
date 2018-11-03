@@ -39,3 +39,15 @@ $ curl 127.0.0.1:8080
 - flags for flexibility (ports, etc)
 - dockerfile!
 - Helm chart + kubernetes
+- GO: something with middleware, something with context
+- SSL? WEBTOKENS?
+- API KEY?
+- Secret Store?
+- database: migration, setup, separate docker container, etc.
+- internationalization (hello world in different languages)
+- makefile
+- bling (go convey, badges, etc)
+- continuous integration
+- continuous delivery
+- monitoring
+- webhooks

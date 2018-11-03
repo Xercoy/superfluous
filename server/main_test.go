@@ -15,7 +15,7 @@ func TestBasicHello(t *testing.T) {
 	require := require.New(t)
 	assert := assert.New(t)
 
-	fullURL := testEndpoint + ":" + testPort
+	fullURL := defaultEndpoint + ":" + defaultPort
 
 	// create the request
 	request, err := http.NewRequest("GET", fullURL, nil)

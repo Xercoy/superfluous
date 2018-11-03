@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="">
+  <meta name="generator" content="Hugo 0.49.2" />
+  <title>#001: Barebones — My New Hugo Site</title>
+
+  <meta name="description" content="">
+  <link rel="canonical" href="http://example.org/post/001_barebones/">
+  <link href="" rel="alternate" type="application/rss+xml" title="My New Hugo Site">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+  <link rel="stylesheet" href="http://example.org/css/highlight.css">
+  <link rel="stylesheet" href="http://example.org/css/paperback.css">
+</head>
+
+
+  <body>
+    <div class="container">
+
+      <header>
+  <h1>#001: Barebones</h1>
+
+  
+  <time datetime="2018-11-02 19:26:54 -0700 PDT">2018/11/02</time>
+  
+
+  
+</header>
+
+
+      <article>
+        
+
+<p>First Post! I never formally created a project with most of the knowledge I&rsquo;ve gained ths far, and I wanted to focus on every aspect of the project: how it&rsquo;s built, how the application works, how it&rsquo;s prepared, deployed, etc. I think these posts will be a great introduction into getting a some idea about the &ldquo;fuzzy&rdquo; stuff we see in web dev; making sense of the buzzwords and learning how things work. Anyways&hellip;</p>
+
+<p>I&rsquo;m building a web server that&rsquo;s going to say, &ldquo;Hello, World!&rdquo;.</p>
+
+<p>Right now, the basics are in the <code>*.go</code></p>
+
+<p>End basic post, cue technical stuff.</p>
+
+<hr />
+
+<h3 id="what-is-a-web-server">What is a Web Server?</h3>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_web_server">Mozilla&rsquo;s Post, &ldquo;What is a Web Server?&rdquo;</a> is a pretty good primer on understanding what a web server is. They make it distinct that the term can refer to hardware, software, or both.</p>
+
+<p>Their software definition:
+<code>An HTTP server is a piece of software that understands URLs (web addresses) and HTTP (the protocol your browser uses to view webpages)</code></p>
+
+<p><strong>My fuzzy definition: a process that listens to one or more ports and accepts HTTP requests from them.</strong></p>
+
+<h3 id="what-is-a-port">What is a Port?</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/Port_(computer_networking)">Wikipedia&rsquo;s post</a> is a pretty good primer. From it&rsquo;s simplest description, it&rsquo;s, &ldquo;an endpoint of communication.&rdquo;</p>
+
+<p>Processes can send and receive information via ports.</p>
+
+<p>Processes can communicate with entities outside of the server/computer via ports as well.</p>
+
+<p>A web server is a process that listens to one or more ports.</p>
+
+<p>Have you ever used FTP or SSH before? You&rsquo;re connecting to that server - an FTP/SSH server (same thing as a process) that is listening on a default port for those protocols. Mind. Blown. <em>BOOOOOOOM</em></p>
+
+<p>While you can have a process listen on a certain range of port numbers, the default port for an HTTP server is 80. There are a list of official and unofficial port numbers that can be reviewed <a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports">here</a>. Be mindful of which ones you listen to when writing applications.</p>
+
+<p><strong>My fuzzy definition: an endpoint of communication.</strong></p>
+
+<p>No copyright intended, but it really doesn&rsquo;t get simpler than that.</p>
+
+<p>Think about it from a real world perspective. Before air travel, the main way people, ideas, and cargo went from continent to continent was by ship. The best way for these ships to land on the continent and be &ldquo;connected&rdquo; with the continent was via ports. Ship ports!</p>
+
+<p>Yes, the ships could probably land anywhere they wanted, but that&rsquo;s not the point. If ships landed anywhere, they&rsquo;d still need to &ldquo;get connected&rdquo;. Their goods, people, or ideas need to be &ldquo;received&rdquo; by businesses who will buy the goods or people who will meet/greet them; entities that will be receiving.</p>
+
+<p>A ship is a &lsquo;payload&rsquo; of data, some kind of information. In our case, it&rsquo;s an HTTP request.</p>
+
+<p>Our HTTP server is the <code>receiving entity</code>. It listens on a port (it&rsquo;s possible ot listen to multiple ports, let&rsquo;s keep it simple though). **</p>
+
+<p>When you <code>curl</code> or navigate to <code>localhost:8080</code>, you send an HTTP GET request (GET is an <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">HTTP Request method</a> to port <code>8080</code>.</p>
+
+<p>Our web server is listening on that port. It receives the request, analyzes the request, and passes a response. Now let&rsquo;s talk about the web server code.</p>
+
+<h3 id="go-go-gadget-golang">Go Go Gadget Golang!</h3>
+
+<p>I&rsquo;m using Go. It&rsquo;s neat. Check out the basic code to run a web server; don&rsquo;t worry about not knowing Go either.</p>
+
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;log&quot;
+    &quot;net/http&quot;
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, &quot;Hello, World!&quot;)
+}
+
+func main() {
+    http.HandleFunc(&quot;/&quot;, handler)
+    log.Fatal(http.ListenAndServe(&quot;:8080&quot;, nil))
+}
+</code></pre>
+
+<p>This is a full code snippet. You can stick this in a <code>main.go</code> file, build the binary and run that, or simply just do a <code>go run main.go</code> to start a process that will listen on port <code>8080</code> on your localhost. Navagat to <code>localhost:8080</code> or use the linux <code>curl</code> command <code>curl localhost:8080</code> from a terminal and you&rsquo;ll get &ldquo;Hello, World!&rdquo; as a response. Neato!</p>
+
+<h3 id="check-it-out">Check it Out</h3>
+
+<p>Output of <code>curl</code> command on OSX, you can do this for Linux too since <code>curl</code> is a Linux tool:
+(127.0.0.1 is the same as localhost, or &lsquo;home&rsquo;)</p>
+
+<pre><code>$ curl 127.0.0.1:8080
+
+&gt; Hello, world!
+</code></pre>
+
+<p>I found a way to check for the process that listens to a specific port <a href="https://stackoverflow.com/questions/4421633/who-is-listening-on-a-given-tcp-port-on-mac-os-x">here</a>:</p>
+
+<pre><code>$ lsof -nP -i4TCP:8080 | grep LISTEN
+
+&gt; helloworl 82601 corey_prak    3u  IPv6 0xdedaad31c2f80c4b      0t0  TCP *:8080 (LISTEN)
+</code></pre>
+
+<h3 id="testing">Testing</h3>
+
+<p>So we have a web server, we manually tested it by actually navigating to it on our browser, OR we used the <code>curl</code> command.</p>
+
+<p>It&rsquo;s important to have programmatic tests. Test for when things work, when things shouldn&rsquo;t work, unintended and unintended behavior, etc.</p>
+
+<p>Via programmatic tests, we&rsquo;ll be able to save us time by being able to trigger tests with a simple command. When we automate some processes, you&rsquo;ll see just how powerful programmatic tests are.</p>
+
+<p>In my opinion, as a programmer, automation is the most powerful skill you have.</p>
+
+<p>In this project, all files ending in <code>_test.go</code> are test files. Through the most basic way of testing, we can simply run <code>go test</code> to execute them.</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>We now have a sense of web servers, computer ports, and the HTTP protocol.</p>
+
+<p>We have a basic server in Go.</p>
+
+<p>We wrote programmatic tests, great for saving us time, great for automation.</p>
+
+<p>Pretty good first post, I&rsquo;d say.</p>
+
+      </article>
+
+      <nav class="site-nav">
+  <a href="http://example.org/">Home</a>
+  <a href="http://example.org/post/">All posts</a>
+
+  
+
+  
+
+  
+</nav>
+
+
+      <footer class="site-footer">
+  <span class="owner">©2018 </span>
+  
+  
+  
+  
+</footer>
+
+
+    </div>
+
+  
+<script src="http://example.org/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>
