@@ -12,7 +12,15 @@ Just a personal project to help me formally use the knowledge I've gained about 
 
 # How to Run
 
+This can be run locally or via Docker.
+
+### Running Locally
 If Go is installed, `go build` should produce a binary. Execute that binary to start the web server which will be listening on port `8080`.
+
+### Via Docker 
+Assuming Docker is installed, there are commands in the Makefile directives set to build and run the server. `make docker-build` will build the image from the Dockerfile and `docker-run` will execute the container. Note: The container will not run in detached mode for now AKA as a "background container". 
+
+## Test if Things are Running
 
 Navigate to the page and you should see:
 ```
@@ -24,6 +32,7 @@ via the `curl` command:
 $ curl 127.0.0.1:8080
 > Hello, world!
 ```
+---
 
 # Changelog
 
@@ -31,6 +40,10 @@ $ curl 127.0.0.1:8080
 
 - Initial commit, added basic hello world message.
 - added tests, refactored files a bit.
+
+**[11/03/2018]**
+
+- Added Dockerfile, Makefile, gitignore
 
 # TODOS
 
@@ -51,3 +64,10 @@ $ curl 127.0.0.1:8080
 - continuous delivery
 - monitoring
 - webhooks
+- ansible playbook to run, install, etc
+- push to dockerhub
+
+# Things to learn 
+
+- gitref
+- triggering releases
