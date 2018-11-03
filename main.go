@@ -1,16 +1,18 @@
 package main
 
 import (
-    "fmt"
-    "log"
-    "net/http"
+	"log"
+	"net/http"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hello, world!")
-}
+const (
+	defaultMessage  = "Hello, world!"
+	defaultPort     = "8080"
+	defaultEndpoint = "localhost"
+)
 
 func main() {
-    http.HandleFunc("/", handler)
-    log.Fatal(http.ListenAndServe(":8080", nil))
+	http.HandleFunc("/", mainHandler)
+
+	log.Fatal(http.ListenAndServe(defaultPort, nil))
 }
