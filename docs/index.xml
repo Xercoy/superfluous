@@ -2,21 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>My New Hugo Site</title>
-    <link>http://example.org/</link>
+    <link>http://xercoy.github.io/superfluous/</link>
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 02 Nov 2018 19:26:54 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 03 Nov 2018 13:29:59 -0700</lastBuildDate>
     
-	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://xercoy.github.io/superfluous/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>003_terraformization.md</title>
+      <link>http://xercoy.github.io/superfluous/post/003_terraformization/</link>
+      <pubDate>Sat, 03 Nov 2018 13:29:59 -0700</pubDate>
+      
+      <guid>http://xercoy.github.io/superfluous/post/003_terraformization/</guid>
+      <description>So we have our web server and we have our Docker container that our web server is going to live in.
+Basically, we have the most basic software portion down, and now we&amp;rsquo;re going to setup the &amp;lsquo;computer&amp;rsquo; its going to run on.
+In this project, I&amp;rsquo;ll be using Terraform to create a Digital Ocean Droplet.
+Enter Terraform Terraform is a great tool for controlling and organizing infrastructure in a safe and efficient way.</description>
+    </item>
+    
+    <item>
       <title>#001: Barebones</title>
-      <link>http://example.org/post/001_barebones/</link>
+      <link>http://xercoy.github.io/superfluous/post/001_barebones/</link>
       <pubDate>Fri, 02 Nov 2018 19:26:54 -0700</pubDate>
       
-      <guid>http://example.org/post/001_barebones/</guid>
+      <guid>http://xercoy.github.io/superfluous/post/001_barebones/</guid>
       <description>First Post! I never formally created a project with most of the knowledge I&amp;rsquo;ve gained ths far, and I wanted to focus on every aspect of the project: how it&amp;rsquo;s built, how the application works, how it&amp;rsquo;s prepared, deployed, etc. I think these posts will be a great introduction into getting a some idea about the &amp;ldquo;fuzzy&amp;rdquo; stuff we see in web dev; making sense of the buzzwords and learning how things work.</description>
     </item>
     

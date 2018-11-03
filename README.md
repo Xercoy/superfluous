@@ -2,6 +2,8 @@
 
 The most overengineered "hello, World!" app.
 
+Currently built using: Go, Docker, Terraform.
+
 # About
 
 It's gonna be "dockerized", "kubernetified", "terraformed", and "other-stuff-ated"...
@@ -40,6 +42,7 @@ $ curl 127.0.0.1:8080
 
 - Initial commit, added basic hello world message.
 - added tests, refactored files a bit.
+- Post #1 done
 
 **[11/03/2018]**
 
@@ -47,6 +50,7 @@ $ curl 127.0.0.1:8080
 
 # TODOS
 
+- Post #2: dockerfile, makefile, gitignore
 - more testing
 - logging
 - flags for flexibility (ports, etc)
