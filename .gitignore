@@ -1,2 +1,8 @@
 # folders
 /bin
+
+# random files
+.DS_Store
+
+/infrastructure/terraform/*.terraform 
+/infrastructure/terraform/*.tfstate*
