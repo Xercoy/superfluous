@@ -6,10 +6,22 @@
     <description>Recent content on The Superfluous Dev Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Nov 2018 21:18:58 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 04 Nov 2018 18:12:27 -0800</lastBuildDate>
     
 	<atom:link href="https://xercoy.github.io/superfluous/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>#005: Reflecting</title>
+      <link>https://xercoy.github.io/superfluous/post/005_reflect/</link>
+      <pubDate>Sun, 04 Nov 2018 18:12:27 -0800</pubDate>
+      
+      <guid>https://xercoy.github.io/superfluous/post/005_reflect/</guid>
+      <description>From the ground up, let&amp;rsquo;s take a look at what we have here.
+Infrastructure We have a fresh server ready to do our bidding. We used Terraform to faciliate an automated way to provision that server.
+Web Server We wrote a simple web server that says, &amp;ldquo;Hello, World!&amp;rdquo; That&amp;rsquo;s it.
+Docker Container We&amp;rsquo;ve encapsulated our web server in a Docker container for plenty of different reasons. Portability, redundancy, to name just two.</description>
+    </item>
     
     <item>
       <title>#004: Terraformization</title>
