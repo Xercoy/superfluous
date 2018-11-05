@@ -4,6 +4,8 @@ The most overengineered "hello, World!" app.
 
 Currently built using: Go, Docker, Terraform.
 
+<img width="100px" height="100px" src="./docs/images/dockerlogo.png"><img width="100px" height="100px" src="./docs/images/golanglogo.jpg"><img width="100px" height="100px" src="./docs/images/terraformlogo.png">
+
 # About
 
 It's gonna be "dockerized", "kubernetified", "terraformed", and "other-stuff-ated"...
