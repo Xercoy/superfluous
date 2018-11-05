@@ -1,6 +1,6 @@
 ---
 title: "#003: Dockerize"
-date: 2018-11-03T13:29:59-07:00
+date: 2018-11-03T18:29:59-07:00
 ---
 
 Now that we have a basic web server working with some tests, it's time to Dockerize it. 

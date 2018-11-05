@@ -3,34 +3,44 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://xercoy.github.io/superfluous/post/003_terraformization/</loc>
+    <loc>https://xercoy.github.io/superfluous/post/004_terraformization/</loc>
+    <lastmod>2018-11-03T21:18:58-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xercoy.github.io/superfluous/post/003_dockerize/</loc>
+    <lastmod>2018-11-03T18:29:59-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xercoy.github.io/superfluous/post/002_makefile/</loc>
     <lastmod>2018-11-03T13:29:59-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://xercoy.github.io/superfluous/post/001_barebones/</loc>
+    <loc>https://xercoy.github.io/superfluous/post/001_barebones/</loc>
     <lastmod>2018-11-02T19:26:54-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://xercoy.github.io/superfluous/categories/</loc>
+    <loc>https://xercoy.github.io/superfluous/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://xercoy.github.io/superfluous/</loc>
-    <lastmod>2018-11-03T13:29:59-07:00</lastmod>
+    <loc>https://xercoy.github.io/superfluous/post/</loc>
+    <lastmod>2018-11-03T21:18:58-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://xercoy.github.io/superfluous/post/</loc>
-    <lastmod>2018-11-03T13:29:59-07:00</lastmod>
+    <loc>https://xercoy.github.io/superfluous/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://xercoy.github.io/superfluous/tags/</loc>
+    <loc>https://xercoy.github.io/superfluous/</loc>
+    <lastmod>2018-11-03T21:18:58-07:00</lastmod>
     <priority>0</priority>
   </url>
   

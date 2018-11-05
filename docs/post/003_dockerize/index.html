@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="">
+  <meta name="generator" content="Hugo 0.49.2" />
+  <title>#003: Dockerize — The Superfluous Dev Blog</title>
+
+  <meta name="description" content="">
+  <link rel="canonical" href="https://xercoy.github.io/superfluous/post/003_dockerize/">
+  <link href="" rel="alternate" type="application/rss+xml" title="The Superfluous Dev Blog">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+  <link rel="stylesheet" href="https://xercoy.github.io/superfluous/css/highlight.css">
+  <link rel="stylesheet" href="https://xercoy.github.io/superfluous/css/paperback.css">
+</head>
+
+
+  <body>
+    <div class="container">
+
+      <header>
+  <h1>#003: Dockerize</h1>
+
+  
+  <time datetime="2018-11-03 18:29:59 -0700 PDT">2018/11/03</time>
+  
+
+  
+</header>
+
+
+      <article>
+        
+
+<p>Now that we have a basic web server working with some tests, it&rsquo;s time to Dockerize it.</p>
+
+<p>This portion is pretty straightforward. There aren&rsquo;t too many dependencies on it, so I created a Dockerfile that basically opened the default port and started it.</p>
+
+<p>Cue technical, educational stuffs.</p>
+
+<hr />
+
+<p>Docker is another popular buzzword that fills the internet, with good reason.</p>
+
+<p>In a nutshell, it makes it easy to pack and ship programs. I&rsquo;m trying really hard to explain this into as little words as possible without spending oodles amount of time on this, so bear with me. Let&rsquo;s start by taking a look at the problem.</p>
+
+<h3 id="big-problem-1-works-on-my-machine">Big Problem #1: Works on My Machine</h3>
+
+<p>To get some peice of software working, sometimes you&rsquo;d need to install prerequisite software or do all these other obscure and miscellaneous things. We&rsquo;ve all been there. To that effect, a lot of unfuriating situations in software come from issues in &lsquo;snowflake&rsquo; environments - snowflake meaning a unique environment.</p>
+
+<p>You&rsquo;d expect the test, production, and development environment to look the same, but it&rsquo;s not. They&rsquo;re all snowflakes. &ldquo;Works on my machine&rdquo; is the precursor phrase to a bad day.</p>
+
+<h3 id="big-problem-2-monolith-soup">Big Problem #2: Monolith Soup</h3>
+
+<p>Another issue is the way applications are developed. Review the definition of a monolithic application from Wikipedia:</p>
+
+<p><code>A monolithic application is self-contained, and independent from other computing applications. The design philosophy is that the application is responsible not just for a particular task, but can perform every step needed to complete a particular function.[1][2] Today, some personal finance applications are monolithic in the sense that they help the user carry out a complete task, end to end, and are &quot;private data silos&quot; rather than parts of a larger system of applications that work together.</code></p>
+
+<p>Monolithic applications can do many things; they&rsquo;re made up of so many different services and they&rsquo;re all tightly coupled. Not only does this make maintenance and development difficult, but it also makes it brittle. If one service or feature fails, usually the entire application goes down.</p>
+
+<p>Have you heard of the term microservices? Another great buzzword. The trend of creating applications is shifting from huge monolithic applications into a single application that is comprised of different services. Ergo, microservices.</p>
+
+<p>Keeping a service, feature, or component of a larger peice of software compartmentalized is immensely helpful. Development is improved in so many ways because all the extra, unrelated &ldquo;stuff&rdquo; is out of the way.</p>
+
+<p>Scaling software, that is, changing and reducing growth to service application load, is revolutionized. To scale monolithic applications, you&rsquo;d literally have to have more instances of that application running. The thing is, oone small part or service of the application could be the bottleneck. The only way to reduce the bottleneck for those one or two features/areas is to literally have more instances of the ENTIRE application running.</p>
+
+<p>With microservices, you could literally just spin up more instance of that particular service that needs to churn out more work.</p>
+
+<h3 id="an-example">An Example</h3>
+
+<p>Say some awesome application needs one $10,000 computer to run. This application does some kind of amazing stuff, and it can export files too. Let&rsquo;s say the exporter is the bottleneck. Instead of having 5 computers run 5 application instances on a monolithic application to make sure the exporter works fine, we could have a situation where we run everything on one computer, with more instances of the exporter microservice running. Voilà, money saved.</p>
+
+<p>Note that scaling can and very much does involve more than one machine/computer/whatever.</p>
+
+<h2 id="enter-docker">Enter Docker</h2>
+
+<p>Docker helps with a form of virtualization, called containerization. This technology has existed for quite a while now, but Docker has made containerization much more accessible.</p>
+
+<p>Through containerization, we can compartmentalize our applications, keep them organized, and facilitate scaling.</p>
+
+<p>By compartmentalization, we can pack any dependencies and other things involved with getting a service or application running. This fixes Big Problem #1 - no more &lsquo;works on my machine&rsquo; problems or snowflake environments. We can basically eliminate the chance for any environment to vary.</p>
+
+<p>Again, I&rsquo;m keeping this explanation really short. There&rsquo;s probably a bit that I&rsquo;m leaving out. Google is your friend. Google is my savior.</p>
+
+<h2 id="dockerfiles-docker-hub">Dockerfiles, Docker Hub</h2>
+
+<p>Like npm, yum, and apt, Docker has a repository for easy access to open source images (which are the result of Dockerfiles) called Docker Hub. Organizations and people alike create images from Dockerfiles and upload them to this public repository for public use.</p>
+
+<p>If you&rsquo;ve looked at open source projects out there, you might have come across Dockerfiles that have accompanied them. I was once diving into some gnarly open source projects for machine learning, and instead of going through the installation process, I ran a Docker container based on the image from the Dockerfile provided.</p>
+
+<p>A Dockerfile is basically a list of directives that dictate the characteristics of a container. You describe what OS your application needs to run on. If you&rsquo;d need to do something like <code>sudo apt-get update</code> you can do that too. Copying files over, opening ports, so many other things. Basically, all the steps required to setup the application and start it can be done from a Dockerfile.</p>
+
+<p>Mine is short and simple, take a look:</p>
+
+<pre><code>FROM golang:1.10-alpine 
+
+LABEL maintainer corey@prak.me 
+
+RUN mkdir /server 
+ADD ./bin /server/bin
+
+WORKDIR /server 
+
+EXPOSE 8080
+
+ENTRYPOINT [&quot;./bin/superfluous&quot;]
+</code></pre>
+
+<p>The most important things to note is that I&rsquo;m creating this image with another image as its base and building off of that. To be more specific, the image/OS is Ubuntu Alpine with Go 1.10 installed. This means I don&rsquo;t have to install it myself. DAMN!</p>
+
+<p>You can see in the <code>EXPOSE</code> that I&rsquo;m asking the container to &ldquo;open&rdquo; port 8080. This needs to be done, othewise the container is &ldquo;closed&rdquo;.</p>
+
+<p>The last line is the execution of the binary, AKA starting the web server. That&rsquo;s it.</p>
+
+<p>Note: This Dockerfile assumes that the creaton will be run from the root of the project, and executed via the Makefile.</p>
+
+<h2 id="in-closing">In Closing</h2>
+
+<p>Docker is great, Dockerfiles are awesome, and we now have a Dockerized version of the web server.</p>
+
+<p>Going forward, if we decide to add a database aspect to this overegineered beauty, dockerizing it is something we&rsquo;d do as well.</p>
+
+<p>I will say now that the full power of having the web server in the container cannot be realized just yet. Stay with me.</p>
+
+      </article>
+
+      <nav class="site-nav">
+  <a href="https://xercoy.github.io/superfluous/">Home</a>
+  <a href="https://xercoy.github.io/superfluous/post/">All posts</a>
+
+  
+
+  
+
+  
+</nav>
+
+
+      <footer class="site-footer">
+  <span class="owner">©2018 </span>
+  
+  
+  
+  
+</footer>
+
+
+    </div>
+
+  
+<script src="https://xercoy.github.io/superfluous/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>

@@ -1,5 +1,5 @@
-baseURL = "http://xercoy.github.io/superfluous"
+baseURL = "https://xercoy.github.io/superfluous/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "The Superfluous Dev Blog"
 theme = "paperback"
 publishDir = "../../docs"

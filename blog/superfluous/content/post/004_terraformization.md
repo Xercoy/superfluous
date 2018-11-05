@@ -3,8 +3,6 @@ title: "#004: Terraformization"
 date: 2018-11-03T21:18:58-07:00
 ---
 
-Terraformization wasn't a word until now. Anyways...
-
 So we have our web server and we have our Docker container that our web server is going to live in. 
 
 Basically, we have the most basic software portion down, and now we're going to setup the 'computer' its going to run on.
@@ -77,3 +75,6 @@ resource "digitalocean_droplet" "web" {
 
 - [Digital Ocean Documentation](https://developers.digitalocean.com/documentation/v2/#regions) - useful for finding out possible image names, resource names, etc. They're not really listed anywhere else it seems.
 
+## Notes
+
+One thing Terraform is great at is being able to keep track of the infrastructure that it's been involved in and things that might change if a `terraform apply` is done.

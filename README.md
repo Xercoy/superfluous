@@ -1,8 +1,10 @@
 # Superfluous
 
-The most overengineered "hello, World!" app.
+The most overengineered "hello, World!" app. **Checkout the dev blog [here](https://xercoy.github.io/superfluous/)**
 
-Currently built using: Go, Docker, Terraform.
+<img src="./docs/images/example.png">
+
+Made with:
 
 <img width="100px" height="100px" src="./docs/images/dockerlogo.png"><img width="100px" height="100px" src="./docs/images/golanglogo.jpg"><img width="100px" height="100px" src="./docs/images/terraformlogo.png">
 

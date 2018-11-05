@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="">
+  <meta name="generator" content="Hugo 0.49.2" />
+  <title>#002: Makefile — The Superfluous Dev Blog</title>
+
+  <meta name="description" content="">
+  <link rel="canonical" href="https://xercoy.github.io/superfluous/post/002_makefile/">
+  <link href="" rel="alternate" type="application/rss+xml" title="The Superfluous Dev Blog">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+  <link rel="stylesheet" href="https://xercoy.github.io/superfluous/css/highlight.css">
+  <link rel="stylesheet" href="https://xercoy.github.io/superfluous/css/paperback.css">
+</head>
+
+
+  <body>
+    <div class="container">
+
+      <header>
+  <h1>#002: Makefile</h1>
+
+  
+  <time datetime="2018-11-03 13:29:59 -0700 PDT">2018/11/03</time>
+  
+
+  
+</header>
+
+
+      <article>
+        <p><a href="https://en.wikipedia.org/wiki/Make_(software)">Make</a> is a build automation tool. It reads directives from a file called a <code>Makefile</code>. People familiar with building or installing Linux application and tools from source will be very familiar with this.</p>
+
+<p>In Unix and Unix-like operating systems, make is oftentimes built in. You can create your own Makefile and have fun with it without needing to install anything.</p>
+
+<p>In addition to building applications, it can perform certain operations related to preparing and manipulating the project. I basically use it to automate a bunch of commands that I&rsquo;m too lazy to type.</p>
+
+<p>Like Git, a Makefile is really powerful, can seem pretty involved and complicated, but a minimal understanding of it can get you far.</p>
+
+<p>Take a look:</p>
+
+<pre><code>APP_NAME=&quot;superfluous-test&quot;
+DOCKERFILE_PATH=&quot;./infrastructure/docker/Dockerfile&quot;
+DOCKERFILE_PORT=4000
+CONTAINER_PORT=8080
+
+docker-build:
+        # build the binary of the web server to ensure that the image contains the latest version
+        CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./bin/superfluous server/*.go
+
+        # build the image
+        docker build -f $(DOCKERFILE_PATH) -t $(APP_NAME) .
+
+docker-run:
+        # -d is detached
+        # -p &lt;LOCAL PORT&gt;:&lt;CONTAINER PORT&gt;
+        # create and run a container based on the image
+        docker run -d $(APP_NAME)
+</code></pre>
+
+<p>The top is declaring variables, then I&rsquo;m just creating two directives that can build and run the image.</p>
+
+<p>Makefiles can do so much more. I almost feel bad for not getting into it as much, but the resources Google can bring can do so much more.</p>
+
+<p>To execute these directives, I simply just need to enter <code>make docker-build</code> or <code>make docker-run</code>.</p>
+
+<p>In regards to automation, preparation, and overall saving us time, Makefiles are great.</p>
+
+<p>If we wanted to improve this farther and make it more useful, we could add a directive to run all the tests. The possibilities are endless.</p>
+
+      </article>
+
+      <nav class="site-nav">
+  <a href="https://xercoy.github.io/superfluous/">Home</a>
+  <a href="https://xercoy.github.io/superfluous/post/">All posts</a>
+
+  
+
+  
+
+  
+</nav>
+
+
+      <footer class="site-footer">
+  <span class="owner">©2018 </span>
+  
+  
+  
+  
+</footer>
+
+
+    </div>
+
+  
+<script src="https://xercoy.github.io/superfluous/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>

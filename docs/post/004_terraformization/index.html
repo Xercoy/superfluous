@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="">
+  <meta name="generator" content="Hugo 0.49.2" />
+  <title>#004: Terraformization — The Superfluous Dev Blog</title>
+
+  <meta name="description" content="">
+  <link rel="canonical" href="https://xercoy.github.io/superfluous/post/004_terraformization/">
+  <link href="" rel="alternate" type="application/rss+xml" title="The Superfluous Dev Blog">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+  <link rel="stylesheet" href="https://xercoy.github.io/superfluous/css/highlight.css">
+  <link rel="stylesheet" href="https://xercoy.github.io/superfluous/css/paperback.css">
+</head>
+
+
+  <body>
+    <div class="container">
+
+      <header>
+  <h1>#004: Terraformization</h1>
+
+  
+  <time datetime="2018-11-03 21:18:58 -0700 PDT">2018/11/03</time>
+  
+
+  
+</header>
+
+
+      <article>
+        
+
+<p>So we have our web server and we have our Docker container that our web server is going to live in.</p>
+
+<p>Basically, we have the most basic software portion down, and now we&rsquo;re going to setup the &lsquo;computer&rsquo; its going to run on.</p>
+
+<p>In this project, I&rsquo;ll be using Terraform to create a Digital Ocean Droplet.</p>
+
+<hr />
+
+<h2 id="enter-terraform">Enter Terraform</h2>
+
+<p>Terraform is a great tool for controlling and organizing infrastructure in a safe and efficient way. A few people I&rsquo;ve worked with have used Digital Ocean to create droplets, AKA Virtual Private Servers. If you&rsquo;ve done one already, think of Terraform this way: it&rsquo;s a means of being able to create and manipulate droplets via files.</p>
+
+<p>Terraform is compatable with most infrastructure providers out there today such as Amazon Web Services, Google Cloud Platform, Digital Ocean, Netlify, Heroku, and much more. It&rsquo;s possible to write a plugin for Terraform for custom infrastructure too. (full list <a href="https://www.terraform.io/docs/providers/index.html">here</a>)</p>
+
+<p>Interesting right? Software is organized as code too. Being able to make it such that Infrastructure can be organized in the same way is SUPER GREAT.</p>
+
+<p>No more &lsquo;this person needs to follow this article or read these instructions&rsquo;. No more obscurity. Also, no more manual work! You can organize, share, and manipulate infrastructure the same way code is managed as files.</p>
+
+<p>This whole thing about having files represent infrastructure configuration? There&rsquo;s a buzzword for that. <strong>Infrastructure As Code</strong>.</p>
+
+<p>Think of how great things could be with Terraform and other technologies. From one simple command line action, we can:</p>
+
+<ul>
+<li><strong>setup the infrastructure (create a droplet)</strong></li>
+<li>prepare the infrastructure (update, download software/code)</li>
+<li>run the entire code test suite (automated testing)</li>
+<li>deploy the code to the server (automated deployment)</li>
+</ul>
+
+<p>Terraform takes care of the first part. In an ideal project, when developing code, if we were to update the code and do a merge to master, we could:</p>
+
+<ul>
+<li>have the new code automatically tested</li>
+<li>have the new code automatically deployed</li>
+</ul>
+
+<p>See the introduction page <a href="https://www.terraform.io/intro/index.html">here</a>.</p>
+
+<p>End Post here, Cue technical notes and stuffs&hellip;</p>
+
+<hr />
+
+<h2 id="the-terraform-file">The Terraform File</h2>
+
+<p>This single Terraform file is used to create a single droplet.</p>
+
+<pre><code># Set the variable value in *.tfvars file
+# or using -var=&quot;do_token=...&quot; CLI option
+variable &quot;do_token&quot; {}
+
+# Configure the DigitalOcean Provider
+provider &quot;digitalocean&quot; {
+  token = &quot;${var.do_token}&quot;
+}
+
+# Create a web server
+resource &quot;digitalocean_droplet&quot; &quot;web&quot; {
+    image = &quot;ubuntu-18-04-x64&quot;
+    name = &quot;superfluous&quot;
+    region = &quot;nyc3&quot;
+    size = &quot;s-1vcpu-1gb&quot;
+}
+</code></pre>
+
+<ul>
+<li><p>Terraform needs the plugin code for the provider. <code>terraform init</code></p></li>
+
+<li><p><code>terraform validate</code> to validate a terraform file</p></li>
+
+<li><p>Terraform variables can be set as environment variables via the <code>TF_VAR_&lt;variable name here&gt;</code> prefix.</p></li>
+
+<li><p>Information about the state of resources provisioned by TF is held in a cache. That MUST be maintained and shared by all entities manipulating the resource, else the resource information must be imported, which is a pain.</p></li>
+</ul>
+
+<h3 id="links">Links</h3>
+
+<ul>
+<li><a href="https://developers.digitalocean.com/documentation/v2/#regions">Digital Ocean Documentation</a> - useful for finding out possible image names, resource names, etc. They&rsquo;re not really listed anywhere else it seems.</li>
+</ul>
+
+<h2 id="notes">Notes</h2>
+
+<p>One thing Terraform is great at is being able to keep track of the infrastructure that it&rsquo;s been involved in and things that might change if a <code>terraform apply</code> is done.</p>
+
+      </article>
+
+      <nav class="site-nav">
+  <a href="https://xercoy.github.io/superfluous/">Home</a>
+  <a href="https://xercoy.github.io/superfluous/post/">All posts</a>
+
+  
+
+  
+
+  
+</nav>
+
+
+      <footer class="site-footer">
+  <span class="owner">©2018 </span>
+  
+  
+  
+  
+</footer>
+
+
+    </div>
+
+  
+<script src="https://xercoy.github.io/superfluous/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>
