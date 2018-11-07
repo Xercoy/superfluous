@@ -3,7 +3,7 @@ FROM golang:1.10-alpine
 LABEL maintainer corey@prak.me 
 
 RUN mkdir /server 
-ADD ./bin /server/bin
+ADD ./ /server/bin
 
 WORKDIR /server 
 
