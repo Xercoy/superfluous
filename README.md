@@ -10,7 +10,13 @@ Made with:
 
 # About
 
-It's gonna be "dockerized", "kubernetified", "terraformed", and "other-stuff-ated"...
+Go: web app which responds to requests with hello world
+Docker: container that houses Go web server 
+Nginx: Reverse proxy to Docker Container
+Terraform: create infrastructure
+Ansible: configures server created from infrastructure
+Bash: scripts representing group of commands to prepare infrastructure
+
 
 # Motivation
 
@@ -44,15 +50,21 @@ $ curl 127.0.0.1:8080
 
 **[11/02/2018]**
 
-- Initial commit, added basic hello world message.
+- initial commit, added basic hello world message.
 - added tests, refactored files a bit.
-- Post #1 done
+- post #1 done
 
 **[11/03/2018]**
 
-- Added Dockerfile, Makefile, gitignore
+- added Dockerfile, Makefile, gitignore
+- added Terraform file
 
-# TODOS
+**[11/05/2018]**
+
+- started adding Ansible assets
+- started creating bash scripts
+
+# IDEAS
 
 - Post #2: dockerfile, makefile, gitignore
 - more testing
@@ -62,7 +74,7 @@ $ curl 127.0.0.1:8080
 - Helm chart + kubernetes
 - GO: something with middleware, something with context, need gracefull shutdown
 - SSL? WEBTOKENS?
-- API KEY?
+- API KEY? to enable addition of additional languages when it's database powered
 - Secret Store?
 - database: migration, setup, separate docker container, etc.
 - internationalization (hello world in different languages)
@@ -70,10 +82,21 @@ $ curl 127.0.0.1:8080
 - bling (go convey, badges, logo, etc)
 - continuous integration
 - continuous delivery
-- monitoring
+- monitoring - prometheus?
 - webhooks
 - ansible playbook to run, install, etc
 - push to dockerhub
+- js framework
+- have nginx as a framework
+- i8n
+- pull i8n code into DB
+- swagger doc
+- circleCI, etc, some random continuous stuff
+- benchmark tests and metrics
+- logstash!
+- database backups
+- cron jobs, etc
+
 
 # Things to learn 
 

@@ -27,7 +27,7 @@ Well, given what we have at this point in time, if we were to start from the beg
 - Log into that Droplet and copy over the repo to the server.
 - Install Docker and run the container.
 
-All those steps are manual. We can automate all of that. 
+All those steps are manual, but remember, we can (and we should!) automate all of that. 
 
 There's much more to be done, and there are scenarios related to performance, security, monitoring, and so many other things that I'm leaving out for now. 
 

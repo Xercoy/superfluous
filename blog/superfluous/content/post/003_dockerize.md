@@ -93,3 +93,16 @@ Docker is great, Dockerfiles are awesome, and we now have a Dockerized version o
 Going forward, if we decide to add a database aspect to this overegineered beauty, dockerizing it is something we'd do as well. 
 
 I will say now that the full power of having the web server in the container cannot be realized just yet. Stay with me.
+
+## Corey Notes
+
+[Networking Using the Host Network](https://docs.docker.com/network/network-tutorial-host/)
+```
+docker run --rm -d --network host --name testingcorey superfluous
+```
+
+Need to allow Docker to utilize the host network.
+
+[Docker Container networking](https://docs.docker.com/v17.09/engine/userguide/networking/)
+
+[Use Host Networking](https://docs.docker.com/v17.09/engine/userguide/networking/)
