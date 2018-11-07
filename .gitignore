@@ -6,3 +6,6 @@
 
 /infrastructure/terraform/*.terraform 
 /infrastructure/terraform/*.tfstate*
+
+# stay away from my private dir
+/private
