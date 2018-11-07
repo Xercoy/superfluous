@@ -26,7 +26,7 @@ fi
 
 if [ "${SERVER_CODE_PATH}" == "" ]
 then 
-    SERVER_CODE_PATH="../../server/*.go"
+    SERVER_CODE_PATH="../server/*.go"
 fi
 
 # install Docker
@@ -47,4 +47,4 @@ printf "4) installing Nginx and preparing virtual host...\n"
 
 # build and run the container
 printf "5) building and running container...\n"
-./docker_build_and_run.sh ${DOCKERFILE_PATH}
+./docker_build_and_run.sh ${DOCKERFILE_PATH} ${SERVER_CODE_PATH}
