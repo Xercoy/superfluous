@@ -9,9 +9,10 @@ import (
 )
 
 const (
-	defaultMessage  = "Hello, world!"
-	defaultPort     = "8080"
-	defaultEndpoint = "localhost"
+	healthCheckMessage = "ONLINE"
+	defaultMessage     = "Hello, world!"
+	defaultPort        = "8081"
+	defaultEndpoint    = "localhost"
 )
 
 func main() {
@@ -19,8 +20,10 @@ func main() {
 
 	// set root as a valid path, then set the handler that will, uh, handle the request.
 	router.HandleFunc("/", mainHandler)
+	router.HandleFunc("/healthz", healthCheckHandler)
 
 	http.Handle("/", router)
+	http.Handle("/healthz", router)
 
 	srv := &http.Server{
 		Handler:      router,
