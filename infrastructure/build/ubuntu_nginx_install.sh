@@ -7,7 +7,7 @@
 VIRTUAL_HOST_FILE_PATH=$1
 SITES_PATH='/etc/nginx/sites-enabled/'
 
-if [ ${VIRTUAL_HOST_FILE_PATH} == "" ]
+if [ "${VIRTUAL_HOST_FILE_PATH}" == "" ]
 then 
     VIRTUAL_HOST_FILE_PATH='./nginx_superfluous_hosts_file'
 fi

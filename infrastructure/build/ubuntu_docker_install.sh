@@ -11,7 +11,7 @@ DOCKER_IS_INSTALLED=$(sudo systemctl status docker >/dev/null 2>/dev/null; echo 
 
 # list services: systemctl list-unit-files
 
-if [ ${DOCKER_IS_INSTALLED} == 0 ]
+if [ "${DOCKER_IS_INSTALLED}" == 0 ]
 then
     echo "Docker is already installed. Exiting..."
     exit 0

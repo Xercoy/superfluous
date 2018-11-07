@@ -8,7 +8,7 @@ CLONE_DESTINATION=$1
 REPO_URL='https://github.com/xercoy/superfluous'
 
 # if no destination provided, repo is cloned in current dir
-if [ CLONE_DESTINATION == "" ]
+if [ "${CLONE_DESTINATION}" == "" ]
 then 
     CLONE_DESTINATION = "./"
 fi

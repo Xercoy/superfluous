@@ -8,21 +8,21 @@ NGINX_HOSTS_PATH=$3
 # TODO: list argument options + check for them
 
 # default repo destination is the current directory
-if [ ${REPO_DESTINATION} == "" ] 
+if [ "${REPO_DESTINATION}" == "" ] 
 then 
     REPO_DESTINTION='~/'
 fi
 
 # being able to provide paths to these to files makes it such that the entire project
-# can be run with just the scripts
-# caveat: if the paths or names of these configs break, this script breaks
+# can be run with just the scripts... caveat: if the paths or names of these configs
+# break, this script breaks
 
-if [ ${DOCKERFILE_PATH} == "" ]
+if [ "${DOCKERFILE_PATH}" == "" ]
 then 
     DOCKERFILE_PATH="${REPO_DESTINATION}/infrastructure/docker/Dockerfile"
 fi
 
-if [ ${NGINX_HOSTS_PATH} == "" ]
+if [ "${NGINX_HOSTS_PATH}" == "" ]
 then
     NGINX_HOSTS_PATH"${REPO_DESTINATION}/infrastructure/build/nginx_superfluous_hosts_file"
 fi 

@@ -6,7 +6,7 @@ DOCKERFILE_PORT=4000
 CONTAINER_PORT=8080
 
 # assume that you're running in same dir that this script is in
-if [ DOCKERFILE_PATH == "" ]
+if [ "${DOCKERFILE_PATH}" == "" ]
 then
     DOCKERFILE_PATH = '../docker/Dockerfile'
 fi
