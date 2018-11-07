@@ -4,11 +4,13 @@
 # TODO MAKE CHECKS
 # saving for later:  systemctl status nginx.service
 
+set -e
+
 VIRTUAL_HOST_FILE_PATH=$1
 SITES_PATH='/etc/nginx/sites-enabled/'
 
 if [ "${VIRTUAL_HOST_FILE_PATH}" == "" ]
-then 
+then
     VIRTUAL_HOST_FILE_PATH='./nginx_superfluous_hosts_file'
 fi
 
@@ -19,7 +21,7 @@ printf "installing...\n"
 sudo apt-get install -y nginx
 
 printf "updating virtual host file...\n"
-cp ${VIRTUAL_HOST_FILE_PATH} ${SITES_PATH}
+cp ${VIRTUAL_HOST_FILE_PATH} ${SITES_PATH}/default
 
 printf "restarting nginx...\n"
 sudo systemctl restart nginx

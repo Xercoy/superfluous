@@ -8,24 +8,20 @@ NGINX_HOSTS_PATH=$3
 # TODO: list argument options + check for them
 
 # default repo destination is the current directory
-if [ "${REPO_DESTINATION}" == "" ] 
-then 
-    REPO_DESTINTION='~/'
+if [ "${REPO_DESTINATION}" == "" ]
+then
+    REPO_DESTINATION='.'
 fi
 
-# being able to provide paths to these to files makes it such that the entire project
-# can be run with just the scripts... caveat: if the paths or names of these configs
-# break, this script breaks
-
 if [ "${DOCKERFILE_PATH}" == "" ]
-then 
-    DOCKERFILE_PATH="${REPO_DESTINATION}/infrastructure/docker/Dockerfile"
+then
+    DOCKERFILE_PATH="../docker/Dockerfile"
 fi
 
 if [ "${NGINX_HOSTS_PATH}" == "" ]
 then
-    NGINX_HOSTS_PATH"${REPO_DESTINATION}/infrastructure/build/nginx_superfluous_hosts_file"
-fi 
+    NGINX_HOSTS_PATH="./nginx_superfluous_hosts_file"
+fi
 
 # install Docker
 printf "1) installing Docker...\n"
@@ -46,4 +42,3 @@ printf "4) installing Nginx and preparing virtual host...\n"
 # build and run the container
 printf "5) building and running container...\n"
 ./docker_build_and_run.sh ${DOCKERFILE_PATH}
-
