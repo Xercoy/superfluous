@@ -22,6 +22,8 @@ printf "adding export clause ${PATH_EXPORT} to Go, remember to restart or source
 printf "basically > source ${PATH_EXPORT_SOURCE}"
 echo ${PATH_EXPORT} >> ${PATH_EXPORT_SOURCE}
 
+source ${PATH_EXPORT_SOURCE}
+
 printf "cleaning up assets...\n"
 rm ${GO_BIN_PATH}
 

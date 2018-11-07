@@ -39,6 +39,9 @@ ${REPO_DESTINATION}/infrastructure/build/ubuntu_docker_install.sh
 printf "2) installing Go...\n"
 ${REPO_DESTINATION}/infrastructure/build/ubuntu_install_go.sh
 
+# TODO: treat this as an arg instead of assuming
+source /"${USER}"/.profile
+
 # clone the repo
 # printf "3) cloning repo...\n"
 #./ubuntu_clone_repo.sh ${REPO_DESTINATION}
